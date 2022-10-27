@@ -1,13 +1,25 @@
-import {StyleSheet, Text, TextInput, View} from 'react-native';
 import React from 'react';
+import {Controller} from 'react-hook-form';
+import {StyleSheet, Text, TextInput, View} from 'react-native';
 import {colors, fonts} from '../../../utils';
 
-const Form = ({label}) => {
+const Form = ({label, name, control, rules = {}}) => {
   return (
-    <View>
-      <Text style={styles.label}>{label}</Text>
-      <TextInput style={styles.input} />
-    </View>
+    <Controller
+      control={control}
+      rules={rules}
+      name={name}
+      render={({field: {onChange, onBlur, value}}) => (
+        <View>
+          <Text style={styles.label}>{label}</Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={onChange}
+            value={value}
+          />
+        </View>
+      )}
+    />
   );
 };
 

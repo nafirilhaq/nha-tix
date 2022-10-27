@@ -3,19 +3,25 @@ import React from 'react';
 import {IcLogo, IcNextNotActive} from '../../assets/icon';
 import {colors, fonts} from '../../utils';
 import {Button, Form, Gap} from '../../components';
+import {useForm, Controller} from 'react-hook-form';
 
-const SignIn = () => {
+const SignIn = ({navigation}) => {
+  const {control, handleSubmit} = useForm();
+  const handleSignUp = () => {
+    navigation.navigate('SignUp');
+  };
+
   return (
     <View style={styles.page}>
       <Image source={IcLogo} style={styles.logo} />
       <Text style={styles.welcome}>Welcome Back, Explorer!</Text>
-      <Form label="Email Address" />
+      <Form label="Email Address" name="email" control={control} />
       <Gap height={16} />
-      <Form label="Password" />
+      <Form label="Password" name="address" control={control} />
       <IcNextNotActive style={styles.button} />
       <View style={styles.askContainer}>
-        <Text style={styles.askText}>Already have an account? </Text>
-        <Button title="Sign In" isLink />
+        <Text style={styles.askText}>Start fresh now? </Text>
+        <Button title="Sign Up" isLink onPress={handleSignUp} />
       </View>
     </View>
   );
