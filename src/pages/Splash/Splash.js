@@ -1,9 +1,15 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
-import {colors} from '../../utils/colors/colors';
+import React, {useEffect} from 'react';
+import {Image, StyleSheet, View} from 'react-native';
 import {IcLogo} from '../../assets/icon';
+import {colors} from '../../utils/colors/colors';
 
-const Splash = () => {
+const Splash = ({navigation}) => {
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.replace('GetStarted');
+    }, 2000);
+  }, [navigation]);
+
   return (
     <View style={styles.page}>
       <Image source={IcLogo} style={styles.logo} />
