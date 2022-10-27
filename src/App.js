@@ -1,8 +1,19 @@
+import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import {GetStarted} from './pages';
 
 const App = () => {
-  return <GetStarted />;
+  return (
+    <View style={styles.page}>
+      <Text>App</Text>
+    </View>
+  );
 };
 
 export default App;
+
+const styles = StyleSheet.create({
+  page: {
+    backgroundColor: 'yellow',
+    flex: 1,
+  },
+});
