@@ -1,8 +1,15 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {colors, fonts} from '../../../utils';
 
-const Button = ({title}) => {
+const Button = ({title, isLink, onPress}) => {
+  if (isLink) {
+    return (
+      <TouchableOpacity onPress={onPress}>
+        <Text style={styles.linkText}>{title}</Text>
+      </TouchableOpacity>
+    );
+  }
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{title}</Text>
@@ -23,5 +30,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: colors.button.primary.text,
     textAlign: 'center',
+  },
+  linkText: {
+    fontFamily: fonts.primary[500],
+    fontSize: 14,
+    color: colors.primary,
   },
 });

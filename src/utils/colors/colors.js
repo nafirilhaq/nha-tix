@@ -1,6 +1,8 @@
 const mainColor = {
   blue1: '#503E9D',
   gray1: '#ADADAD',
+  gray2: '#E4E4E4',
+  yellow1: '#FBD460',
 };
 
 export const colors = {
@@ -15,6 +17,16 @@ export const colors = {
     primary: {
       background: mainColor.blue1,
       text: 'white',
+    },
+  },
+  form: {
+    border: {
+      primary: mainColor.gray2,
+      active: mainColor.yellow1,
+    },
+    label: {
+      primary: mainColor.gray2,
+      active: mainColor.yellow1,
     },
   },
 };

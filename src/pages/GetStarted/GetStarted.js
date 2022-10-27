@@ -4,7 +4,11 @@ import {IcLogo} from '../../assets/icon';
 import {fonts, colors} from '../../utils';
 import {Button} from '../../components';
 
-const GetStarted = () => {
+const GetStarted = ({navigation}) => {
+  const handleSignIn = () => {
+    navigation.navigate('SignIn');
+  };
+
   return (
     <View style={styles.page}>
       <View style={styles.topContent}>
@@ -18,7 +22,7 @@ const GetStarted = () => {
         <Button title="Get Started" />
         <View style={styles.askContainer}>
           <Text style={styles.askText}>Already have an account? </Text>
-          <Text style={styles.signInText}>Sign In</Text>
+          <Button title="Sign In" isLink onPress={handleSignIn} />
         </View>
       </View>
     </View>
@@ -69,10 +73,5 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primary[400],
     fontSize: 14,
     color: colors.text.secondary,
-  },
-  signInText: {
-    fontFamily: fonts.primary[500],
-    fontSize: 14,
-    color: colors.primary,
   },
 });
