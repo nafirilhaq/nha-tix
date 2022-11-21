@@ -1,22 +1,39 @@
+import 'firebase/auth';
+import {createUserWithEmailAndPassword} from 'firebase/auth';
+import React from 'react';
+import {useForm} from 'react-hook-form';
 import {
   Image,
   ScrollView,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
-import {Form, Gap, Header} from '../../components';
-import {colors} from '../../utils';
 import {IcAddPhoto, IcDefaultPhoto, IcNextActive} from '../../assets/icon';
-import {useForm, Controller} from 'react-hook-form';
+import {Form, Gap, Header} from '../../components';
+import {fireAuth} from '../../config';
+import {colors} from '../../utils';
 
 const SignUp = () => {
   const {control, handleSubmit} = useForm();
 
   const register = data => {
     console.warn(data);
+    createUserWithEmailAndPassword(fireAuth, data.email, data.password)
+      .then(userCredential => {
+        // Signed in
+        var user = userCredential.user;
+        console.warn('sukses');
+        console.warn(userCredential);
+        // ...
+      })
+      .catch(error => {
+        console.warn('gagal');
+        console.warn(error);
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ..
+      });
   };
 
   return (
@@ -41,8 +58,10 @@ const SignUp = () => {
           control={control}
         />
         <Gap height={30} />
-        <TouchableOpacity onPress={handleSubmit(register)}>
-          <IcNextActive style={styles.nextButton} />
+        <TouchableOpacity
+          onPress={handleSubmit(register)}
+          style={styles.nextButton}>
+          <IcNextActive />
         </TouchableOpacity>
       </ScrollView>
     </View>

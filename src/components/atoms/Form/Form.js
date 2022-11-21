@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     top: -10,
     left: 20,
     backgroundColor: colors.white,
+    color: colors.text.secondary,
     zIndex: 1,
   },
   input: {

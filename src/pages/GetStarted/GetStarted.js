@@ -8,7 +8,6 @@ const GetStarted = ({navigation}) => {
   const handleSignIn = () => {
     navigation.navigate('SignIn');
   };
-
   return (
     <View style={styles.page}>
       <View style={styles.topContent}>
@@ -19,7 +18,10 @@ const GetStarted = ({navigation}) => {
         </Text>
       </View>
       <View style={styles.bottomContent}>
-        <Button title="Get Started" />
+        <Button
+          title="Get Started"
+          onPress={() => navigation.replace('MainApp')}
+        />
         <View style={styles.askContainer}>
           <Text style={styles.askText}>Already have an account? </Text>
           <Button title="Sign In" isLink onPress={handleSignIn} />
